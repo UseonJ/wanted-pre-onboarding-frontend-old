@@ -1,6 +1,6 @@
-import {stc} from 'styled-components'
+import stc from 'styled-components'
 
-const Button = stc.button`
+const Button_C = stc.button`
   cursor: pointer;
   border: none;
   border-radius: 4px;
@@ -14,6 +14,6 @@ const Button = stc.button`
 
 export function Button () {
     return (
-        <Button></Button>
+        <Button_C></Button_C>
     )
 }
