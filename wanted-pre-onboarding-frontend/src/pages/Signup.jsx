@@ -15,8 +15,7 @@ background-image: linear-gradient(
     to bottom,
     rgba(69, 44, 221, 0.3),
     rgba(255, 255, 255, 0)
-  ),
-  url('./images/codestates-motif.png');
+  )
 `
 
 export default function Signup () {
@@ -24,32 +23,7 @@ export default function Signup () {
     
 
     <Signup_Body>
-      <Main>  
-      <fieldset>
-        <input type="text" className="username" placeholder="아이디" />
-      </fieldset>      
-      <div class="success-message hide">사용할 수 있는 아이디입니다</div>
-      <div class="failure-message hide">아이디는 네 글자 이상이어야 합니다</div>      
-      <fieldset>
-        <input type="password" className="password" placeholder="비밀번호" />
-      </fieldset>
-
-      
-      <fieldset>
-        <input
-          type="password"
-          className="password-retype"
-          placeholder="비밀번호 확인"
-        />
-      </fieldset>
-
-      
-      <div class="mismatch-message hide">비밀번호가 일치하지 않습니다</div>
-
-      
-      <fieldset class="signup">
-        <button>회원가입</button>
-      </fieldset>
+      <Main>      
       </Main>
     </Signup_Body>
     
