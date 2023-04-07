@@ -1,12 +1,6 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './Main.module.css';
-
-
-
-// const fetchSignup = () {}
-
-
 
 export function Main () {
     const [idValue, setIdValue] = useState("");
@@ -46,15 +40,32 @@ const handlePasswordCheckValue = (e) =>{
   }   
 }
 
+useEffect (() => {
+  if(idValid && passwordCheckValid && passwordValid){
+    setAllValid(true)
+  } else {
+    setAllValid(false)
+  }
+},[idValid,passwordValid,passwordCheckValid])
+
     return (
         <main className={styles.Main}> 
         <fieldset>
-            <input type="text" className="username" placeholder="아이디(이메일)" onChange={handleIdValue}/>
+            <input data-testid="email-input" 
+              type="text" 
+              className="username" 
+              placeholder="아이디(이메일)" 
+              onChange={handleIdValue}/>
         </fieldset>      
         <div className={idValid? "":styles.hide}>사용할 수 있는 아이디입니다</div>
         <div className={idValid? styles.hide: idValue? "" : styles.hide}>유효한 이메일 형식이 아닙니다</div>      
         <fieldset>
-            <input type="password" className="password" placeholder="비밀번호" onChange={handlePasswordValue}/>
+            <input
+              data-testid="password-input" 
+              type="password" 
+              className="password" 
+              placeholder="비밀번호" 
+              onChange={handlePasswordValue}/>
         </fieldset>
 
         <div className={passwordValid? styles.hide: passwordValue? "":styles.hide}>비밀번호는 8자리 이상이어야 합니다</div>
@@ -73,7 +84,10 @@ const handlePasswordCheckValue = (e) =>{
 
       
       <fieldset className={styles.signup}>
-        <button disabled={idValid? true:false}>회원가입</button>
+        <button 
+          data-testid="signup-button"
+          disabled={allValid? false:true} 
+          onClick={'fetch method'}>회원가입</button>
       </fieldset>
         </main>
     )
