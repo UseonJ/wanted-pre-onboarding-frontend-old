@@ -12,10 +12,14 @@ function App() {
   return (
   <BrowserRouter>
       <Routes>
-        <Route path='/' />
-        <Route path='/signup' />
-        <Route path='/signin' />
-        <Route path='/todo' />
+        <Route path='/' 
+        render={() => (isLogin ? <Redirect to="/todo" /> : <Redirect to="/signin" />)}/>
+        <Route path='/signup' 
+        render={() => (isLogin ? <Redirect to="/todo" /> : <Signup />)}/>
+        <Route path='/signin'
+        render={() => (isLogin ? <Redirect to="/todo" /> : <Signin />)} />
+        <Route path='/todo' 
+        render={() => (isLogin ? <Todo /> : <Redirect to="/signin" />)}/>
       </Routes>
   </BrowserRouter>
     
