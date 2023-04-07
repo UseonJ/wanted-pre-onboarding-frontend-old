@@ -1,6 +1,6 @@
-import {stc} from 'styled-components'
+import stc from 'styled-components'
 
-const Input = stc.input`
+const Input_C = stc.input`
     border: none;
     width: 12rem;
     font-size: 14px;
@@ -8,6 +8,6 @@ const Input = stc.input`
 
 export function Input () {
     return (
-        <input></input>
+        <Input_C></Input_C>
     )
 }
