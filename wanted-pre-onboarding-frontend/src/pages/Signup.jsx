@@ -1,13 +1,30 @@
+import stc from 'styled-components'
+
 import { Fieldset_Input } from "../components/Fieldset_Input";
 import { Fieldset_Button } from "../components/Fieldset_Button";
 import { Message_div } from "../components/Message_div";
 import { Main } from "../components/Main";
 
+const Signup_Body = stc.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+height: 100vh;
+background-image: linear-gradient(
+    to bottom,
+    rgba(69, 44, 221, 0.3),
+    rgba(255, 255, 255, 0)
+  ),
+  url('./images/codestates-motif.png');
+`
+
 export default function Signup () {
     return(
     
 
-    <div>
+    <Signup_Body>
+      <Main>  
       <fieldset>
         <input type="text" className="username" placeholder="아이디" />
       </fieldset>      
@@ -33,7 +50,8 @@ export default function Signup () {
       <fieldset class="signup">
         <button>회원가입</button>
       </fieldset>
-    </div>
+      </Main>
+    </Signup_Body>
     
     )
 }
