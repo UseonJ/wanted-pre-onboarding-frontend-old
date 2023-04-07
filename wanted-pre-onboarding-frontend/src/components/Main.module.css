@@ -1,0 +1,64 @@
+  .Main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+  color: #0f1319;
+  background-color: #ffffff;
+  border-radius: 14px;
+  font-size: 16px;
+  height: 400px;
+  width: 350px;
+  }
+  
+  fieldset {
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+    border-color: #f5f7f9;
+    justify-content: center;
+    margin: 4px;
+    padding: 8px 12px;
+  }
+
+  button {
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    width: 12rem;
+    height: 2.25rem;
+    color: white;
+    background-color: #452cdd;
+    font-size: 14px;
+    transition: all 0.3s;
+  }
+
+  button:hover {
+    background-color: #7361e5;
+  }
+
+  input {
+    border: none;
+    width: 12rem;
+    font-size: 14px;
+  }
+  
+  input:focus {
+    outline: none;
+  }
+  
+  .hide {
+    display: none;
+    color: red;
+    font-size: 12px;
+    padding-left: 20px;
+  }
+
+  .signup {
+    border: none;
+  }
+
