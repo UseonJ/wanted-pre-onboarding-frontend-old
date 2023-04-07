@@ -1,6 +1,6 @@
-import {stc} from 'styled-components'
+import stc from 'styled-components'
 
-const Message_div = stc.div`
+const Message_divison = stc.div`
     color: var(--peach-600);
     font-size: 12px;
     padding-left: 20px;
@@ -8,6 +8,6 @@ const Message_div = stc.div`
 
 export function Message_div () {
     return (
-        <div></div>
+        <Message_divison></Message_divison>
     )
 }
