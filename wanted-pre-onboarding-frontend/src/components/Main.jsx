@@ -11,6 +11,7 @@ import styles from './Main.module.css';
 export function Main () {
     const [idValue, setIdValue] = useState("");
     const [passwordValue, setPasswordValue] = useState("");
+    const [passwordCheckValue, setPasswordCheckValue] = useState("");
     const [idValid, setidValid] = useState(false);
     const [passwordValid, setPasswordValid] = useState(false);
     const [passwordCheckValid, setPasswordCheckValid] = useState(false);
@@ -36,6 +37,15 @@ const handlePasswordValue = (e) =>{
   }   
 }
 
+const handlePasswordCheckValue = (e) =>{
+  setPasswordCheckValue(e.target.value)
+  if(passwordValue === passwordCheckValue){
+    setPasswordCheckValid(true)
+  } else if (passwordValue === passwordCheckValue){
+    setPasswordCheckValid(false) 
+  }   
+}
+
     return (
         <main className={styles.Main}> 
         <fieldset>
@@ -54,6 +64,7 @@ const handlePasswordValue = (e) =>{
           type="password"
           className="password-retype"
           placeholder="비밀번호 확인"
+          onChange={handlePasswordCheckValue}
         />
       </fieldset>
 
