@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { useState } from 'react';
 import Signin from './pages/Signin';
 import Signup from './pages/Signup';
 import Todo from './pages/Todo';
@@ -13,13 +14,13 @@ function App() {
   <BrowserRouter>
       <Routes>
         <Route path='/' 
-        render={() => (isLogin ? <Redirect to="/todo" /> : <Redirect to="/signin" />)}/>
+        element={isLogin ? <Navigate to="/todo"/> : <Navigate to="/signin"/>} />
         <Route path='/signup' 
-        render={() => (isLogin ? <Redirect to="/todo" /> : <Signup />)}/>
+        element={isLogin ? <Navigate to="/todo"/> : <Signup />}/>
         <Route path='/signin'
-        render={() => (isLogin ? <Redirect to="/todo" /> : <Signin />)} />
+        element={isLogin ? <Navigate to="/todo"/> : <Signin />} />
         <Route path='/todo' 
-        render={() => (isLogin ? <Todo /> : <Redirect to="/signin" />)}/>
+        render={isLogin ? <Todo /> : <Navigate to="/signin"/>}/>
       </Routes>
   </BrowserRouter>
     
