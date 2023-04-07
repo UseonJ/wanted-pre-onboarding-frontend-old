@@ -1,6 +1,6 @@
-import {stc} from 'styled-components'
+import stc from 'styled-components'
 
-const Main = stc.main`
+const Main_C = stc.main`
     border: none;
     width: 12rem;
     font-size: 14px;
@@ -8,6 +8,6 @@ const Main = stc.main`
 
 export function Main () {
     return (
-        <Main></Main>
+        <Main_C>test</Main_C>
     )
 }
