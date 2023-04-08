@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import styles from './Main.module.css';
 
-export function Main () {
+export function Main ({title}) {
     const [idValue, setIdValue] = useState("");
     const [passwordValue, setPasswordValue] = useState("");
     
@@ -66,7 +66,7 @@ useEffect (() => {
         <button 
           data-testid="signup-button"
           disabled={allValid? false:true} 
-          onClick={'fetch method'}>회원가입</button>
+          onClick={'fetch method'}>{title}</button>
       </fieldset>
         </main>
     )
