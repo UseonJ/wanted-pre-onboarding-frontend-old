@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { Main} from '../components/Main';
+import { SigninMain } from '../components/SigninMain';
 import stc from 'styled-components'
 
 const Signin_Body = stc.div`
@@ -15,16 +14,23 @@ background-image: linear-gradient(
   )
 `
 
-export default function Signin(){
+export default function Signin({isLogin, setIsLogin}){
+
+  console.log(isLogin)
   
-  const title = '로그인'
+  const title = "로그인"
+  const method = "POST"
+  const signinURL = "https://www.pre-onboarding-selection-task.shop/auth/signin"
   
   return(
     
-
     <Signin_Body>
-      <Main title = {title}>      
-      </Main>
+      <SigninMain title = {title}
+            method = {method}
+            fetchurl = {signinURL}
+            isLogin = {isLogin}
+            setIsLogin = {setIsLogin}>      
+      </SigninMain>
     </Signin_Body>
     
     )
