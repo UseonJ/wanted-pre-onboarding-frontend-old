@@ -1,19 +1,23 @@
 import { useEffect, useState } from "react";
 
-const useFetch = (method,fetchUrl) => {
+const UseFetch = (method,fetchUrl,ID,PW) => {
 
   const [data, setData] = useState();
 
   useEffect(() => {
     fetch(fetchUrl, {
+      method:{method},
       headers: {
-        "method":{method},
-        "Content-Type": "application/json",
-        Accept: "application/json"
+        "Content-Type": "application/json"
+      },
+      body: {
+        'email': {ID},
+        'password':{PW}
       }
     })
-      .then((response) => {
-        return response.json();
+      .then((res) => {
+        console.log(res);
+        return res.json();
       })
       .then((myJson) => {
         setData(myJson);
@@ -27,4 +31,4 @@ const useFetch = (method,fetchUrl) => {
 
 };
 
-export default useFetch;
+export default UseFetch;
