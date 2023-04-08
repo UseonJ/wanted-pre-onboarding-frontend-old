@@ -1,55 +1,79 @@
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './Main.module.css';
 
-export function Main ({title}) {
-    const [idValue, setIdValue] = useState("");
-    const [passwordValue, setPasswordValue] = useState("");
+
+export function Main ({title,method,fetchurl}) {
+    const [loginInfo, setLoginInfo] = useState({
+      email:'',
+      password:''
+    });
     
+    const navigation = useNavigate();
+
     const [idValid, setidValid] = useState(false);
     const [passwordValid, setPasswordValid] = useState(false);
+    const [emailMSG, setEmailMSG] = useState('');
+    const [passwordMSG, setPasswordMSG] = useState('');
     
-    const [allValid, setAllValid] = useState(false);
     const regExid = /@/
     const regExpw = /\w{8,}/
 
-const handleIdValue = (e) =>{
-    setIdValue(e.target.value)
-    if(regExid.test(idValue)){
+const handleIdValue = async (e) =>{
+    setLoginInfo({...loginInfo, email:e.target.value})
+    if(regExid.test(e.target.value)){
        setidValid(true)
-    } else if(!regExpw.test(idValue)) {
+       setEmailMSG('')
+    } else {
        setidValid(false)
+       setEmailMSG('유효한 이메일 형식이 아닙니다')
     }    
 }
 
 const handlePasswordValue = (e) =>{
-  setPasswordValue(e.target.value)
-  if(regExpw.test(passwordValue)){
+  setLoginInfo({...loginInfo, password:e.target.value})
+  if(regExpw.test(e.target.value)){
+    setPasswordMSG('')
     setPasswordValid(true)
-  } else if (!regExpw.test(passwordValue)){
-    setPasswordValid(false) 
+  } else {
+    setPasswordMSG('비밀번호는 8자리 이상이어야 합니다') 
+    setPasswordValid(false)    
   }   
 }
 
-useEffect (() => {
-  if(idValid && passwordValid){
-    setAllValid(true)
-  } else {
-    setAllValid(false)
-  }
-},[idValid,passwordValid])
+const fetchhandler = (method,fetchurl,idValue,passwordValue)=>{
+  
+  
+  return fetch("https://www.pre-onboarding-selection-task.shop/auth/signup", {
+      method:"POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body:JSON.stringify(loginInfo)    
+      })
+      .then((res) => {
+        alert(`회원가입에 성공하셨습니다!
+        ID:${loginInfo.email}`);
+        navigation("/signin")
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("회원가입에 실패하였습니다.")
+      });
+}
 
     return (
-        <main className={styles.Main}> 
+        <main className={styles.Main}>
+          <div><h1>Sign up!!</h1></div> 
         <fieldset>
             <input data-testid="email-input" 
               type="text" 
               className="username" 
               placeholder="아이디(이메일)" 
               onChange={handleIdValue}/>
-        </fieldset>      
-        <div className={idValid? "":styles.hide}>사용할 수 있는 아이디입니다</div>
-        <div className={idValid? styles.hide: idValue? "" : styles.hide}>유효한 이메일 형식이 아닙니다</div>      
+        </fieldset>          
+        <div>{emailMSG}</div>      
         <fieldset>
             <input
               data-testid="password-input" 
@@ -58,15 +82,15 @@ useEffect (() => {
               placeholder="비밀번호" 
               onChange={handlePasswordValue}/>
         </fieldset>
-
-        <div className={passwordValid? styles.hide: passwordValue? "":styles.hide}>비밀번호는 8자리 이상이어야 합니다</div>
+        <div>{passwordMSG}</div>
 
       
       <fieldset className={styles.signup}>
         <button 
           data-testid="signup-button"
-          disabled={allValid? false:true} 
-          onClick={'fetch method'}>{title}</button>
+          disabled={(idValid && passwordValid)? false:true}
+          className={(idValid && passwordValid)? styles.active:styles.inactive} 
+          onClick={fetchhandler}>{title}</button>
       </fieldset>
         </main>
     )
