@@ -37,8 +37,12 @@
     transition: all 0.3s;
   }
 
-  button:hover {
+  .active:hover {
     background-color: #7361e5;
+  }
+
+  .inactive {
+    background-color: gray;
   }
 
   input {
