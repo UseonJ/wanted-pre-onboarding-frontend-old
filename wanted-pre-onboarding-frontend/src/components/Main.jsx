@@ -5,10 +5,10 @@ import styles from './Main.module.css';
 export function Main () {
     const [idValue, setIdValue] = useState("");
     const [passwordValue, setPasswordValue] = useState("");
-    const [passwordCheckValue, setPasswordCheckValue] = useState("");
+    
     const [idValid, setidValid] = useState(false);
     const [passwordValid, setPasswordValid] = useState(false);
-    const [passwordCheckValid, setPasswordCheckValid] = useState(false);
+    
     const [allValid, setAllValid] = useState(false);
     const regExid = /@/
     const regExpw = /\w{8,}/
@@ -31,22 +31,13 @@ const handlePasswordValue = (e) =>{
   }   
 }
 
-const handlePasswordCheckValue = (e) =>{
-  setPasswordCheckValue(e.target.value)
-  if(passwordValue === passwordCheckValue){
-    setPasswordCheckValid(true)
-  } else if (passwordValue === passwordCheckValue){
-    setPasswordCheckValid(false) 
-  }   
-}
-
 useEffect (() => {
-  if(idValid && passwordCheckValid && passwordValid){
+  if(idValid && passwordValid){
     setAllValid(true)
   } else {
     setAllValid(false)
   }
-},[idValid,passwordValid,passwordCheckValid])
+},[idValid,passwordValid])
 
     return (
         <main className={styles.Main}> 
@@ -69,18 +60,6 @@ useEffect (() => {
         </fieldset>
 
         <div className={passwordValid? styles.hide: passwordValue? "":styles.hide}>비밀번호는 8자리 이상이어야 합니다</div>
-
-      <fieldset>
-        <input
-          type="password"
-          className="password-retype"
-          placeholder="비밀번호 확인"
-          onChange={handlePasswordCheckValue}
-        />
-      </fieldset>
-
-      
-      <div className={passwordCheckValid? "":styles.hide}>비밀번호가 일치하지 않습니다</div>
 
       
       <fieldset className={styles.signup}>
