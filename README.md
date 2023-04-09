@@ -9,7 +9,7 @@ wanted April internship pre-project
 
 <br>
 좌:로그인/회원가입 우:투두리스트CRUD/<br>
- <img src =   width = "300" height = "400"/>
+ <img src = "https://user-images.githubusercontent.com/114300611/230780195-1623cf43-b1ca-460f-b118-3f0033beb61d.mp4"  width = "300" height = "400"/>
 
 
 
@@ -30,6 +30,6 @@ npm install & npm start
 ```
 
 ### ⚠️ 커밋 컨벤션
-- feat : 새로운 기능추가
+- ✨ : 새로운 기능추가
 - fix : 기존 기능 수정
 - design : 디자인 
