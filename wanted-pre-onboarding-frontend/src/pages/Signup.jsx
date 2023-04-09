@@ -16,14 +16,17 @@ background-image: linear-gradient(
 
 export default function Signup () {
   
-  const title = '회원가입'
+  const title = "회원가입"
+  const method = "POST"
+  const signupURL = "https://www.pre-onboarding-selection-task.shop/auth/signup"
 
   return(
-    
-    
 
     <Signup_Body>
-      <Main title = {title}>      
+      <Main title = {title}
+            method = {method}
+            fetchurl = {signupURL}
+            >      
       </Main>
     </Signup_Body>
     

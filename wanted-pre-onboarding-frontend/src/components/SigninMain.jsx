@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import styles from './Main.module.css';
 
 
@@ -59,12 +59,13 @@ const fetchhandler = (method,fetchurl,idValue,passwordValue)=>{
       .then((res) => {
         // token = res.access_token
         localStorage.setItem('token', res.access_token);
-        alert('로그인에 성공하셨습니다!');
+        
         // 토큰이 '' 초기값이 아니라 저장된 내용이 있고 로컬스토리지와 같은 경우에 isLogin 상태변경 및 리다이렉트
         // if(localStorage.getItem('token') === token){}
         setIsLogin(true)
         // if(isLogin) 
         navigation('/todo')
+        alert('로그인에 성공하셨습니다!');
         }
       )
       .catch((error) => {
@@ -102,6 +103,7 @@ const fetchhandler = (method,fetchurl,idValue,passwordValue)=>{
           disabled={idValid && passwordValid? false:true}
           className={idValid && passwordValid? styles.active:styles.inactive} 
           onClick={fetchhandler}>{title}</button>
+        <Link to={'/signup'}><button>회원가입</button></Link>  
       </fieldset>
     </main>
     )

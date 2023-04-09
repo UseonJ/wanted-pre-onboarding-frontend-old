@@ -20,7 +20,7 @@ export function Main ({title,method,fetchurl}) {
     const regExid = /@/
     const regExpw = /\w{8,}/
 
-const handleIdValue = async (e) =>{
+const handleIdValue = (e) =>{
     setLoginInfo({...loginInfo, email:e.target.value})
     if(regExid.test(e.target.value)){
        setidValid(true)
