@@ -9,18 +9,19 @@ function App() {
 
   //JWT token 보유 여부에 따라 true || false
   const [isLogin,setIsLogin] = useState(false);
+  const token = localStorage.getItem('token');
 
   return (  
   <BrowserRouter>
       <Routes>
         <Route path='/' 
-        element={isLogin ? <Navigate to="/todo"/> : <Navigate to="/signup"/>} />
+        element={token ? <Navigate to="/todo"/> : <Navigate to="/signup"/>} />
         <Route path='/signup' 
-        element={isLogin ? <Navigate to="/todo"/> : <Signup />}/>
+        element={token ? <Navigate to="/todo"/> : <Signup />}/>
         <Route path='/signin'
-        element={isLogin ? <Navigate to="/todo"/> : <Signin isLogin={isLogin} setIsLogin={setIsLogin} />} />
+        element={token ? <Navigate to="/todo"/> : <Signin isLogin={isLogin} setIsLogin={setIsLogin} />} />
         <Route path='/todo' 
-        element={isLogin ? <Todo /> : <Navigate to="/signin"/>}/>
+        element={token ? <Todo /> : <Navigate to="/signin"/>}/>
       </Routes>
   </BrowserRouter>
     
